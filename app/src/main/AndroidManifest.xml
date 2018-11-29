@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.proyecto.jerbo.agenda2"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <uses-sdk tools:overrideLibrary="com.wdullaer.materialdatetimepicker"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.AddProcesoActivity"
+            android:parentActivityName=".Activities.MostrarProcesosActivity" />
+        <activity
+            android:name=".Activities.MostrarProcesosActivity"
+            android:label="@string/title_activity_mostrar_procesos"
+            android:parentActivityName=".Activities.MostrarProcesosActivity" />
+        <activity android:name=".Activities.PruebaRoomActivity" />
+        <activity android:name=".Activities.MostrarCompromisos"
+            android:parentActivityName=".Activities.MainActivity"/>
+        <activity
+            android:name=".Activities.AddCompromisoActivity"
+            android:label="@string/title_activity_add_compromiso"
+            android:parentActivityName=".Activities.MostrarCompromisos"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.proyecto.jerbo.agenda2.Activities.MostrarCompromisos" />
+        </activity>
+    </application>
+
+</manifest>

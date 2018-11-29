@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Agenda 2.0"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Agenda 2.0 ahora tambien eestamos probando este modo de iniciar xd"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Estamos añadiendo nuevas fiuncio0nalidades por mientras xd entre ellos almacenadimento de imagenes domucneot sy todo ese tipo de cosas "
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Esta es una fase  de puerbas llena de errosors xd para el lanzamiento oficial."
+        android:textAlignment="center"
+        android:paddingBottom="10dp"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PRUEBAS GRATIS XD"
+        android:background="#ff0000"
+        android:textColor="#ffff"
+        android:layout_marginBottom="10dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="2">
+        <Button
+            android:id="@+id/process_button"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:text="Procesos"
+            />
+
+        <Button
+            android:id="@+id/inicio_clientes"
+            android:layout_gravity="fill_horizontal"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="CLIENTES" />
+
+        <Button
+            android:id="@+id/prueba_2"
+            android:layout_gravity="fill_horizontal"
+            android:layout_rowWeight="1"
+            android:text="MI AGENDA - prueba 2 xd"
+            android:textAlignment="center"
+
+            />
+
+        <Button
+            android:id="@+id/financiero_inicio"
+            android:layout_gravity="fill_horizontal"
+            android:layout_rowWeight="1"
+            android:text="FINANCIERO" />
+
+
+
+
+    </GridLayout>
+
+
+
+</LinearLayout>

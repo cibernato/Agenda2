@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AddProcesoActivity"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/fragment_padding">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@layout/border"
+            android:paddingLeft="@dimen/fragment_padding"
+            android:paddingRight="@dimen/fragment_padding">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding"
+                android:paddingTop="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:singleLine="true"
+                    android:id="@+id/cliente_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CLIENTE" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@layout/border"
+            android:paddingLeft="@dimen/fragment_padding"
+            android:paddingRight="@dimen/fragment_padding"
+            android:layout_marginTop="15dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/fragment_padding"
+                >
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:singleLine="true"
+                        android:id="@+id/expediente_proceso_add"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="EXPEDIENTE"
+                        />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/ic_input_add"
+                    android:tint="#000000"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@layout/border"
+            android:paddingLeft="@dimen/fragment_padding"
+            android:paddingRight="@dimen/fragment_padding"
+            android:layout_marginTop="15dp">
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/fragment_padding"
+                    >
+                    <android.support.design.widget.TextInputEditText
+                        android:singleLine="true"
+                        android:id="@+id/juzgado_proceso_add"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="JUZGADO"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@layout/border"
+            android:paddingLeft="@dimen/fragment_padding"
+            android:paddingRight="@dimen/fragment_padding"
+            android:layout_marginTop="15dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding"
+                android:paddingTop="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:singleLine="true"
+                    android:id="@+id/especialista_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ESPECIALISTA" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@layout/border"
+            android:paddingLeft="@dimen/fragment_padding"
+            android:paddingRight="@dimen/fragment_padding"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Situacion"
+                android:paddingTop="@dimen/fragment_padding"
+                android:paddingBottom="@dimen/fragment_padding"/>
+            <Button
+                android:id="@+id/situacion_proceso_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTIVO"
+                android:layout_marginBottom="@dimen/fragment_padding"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/contrario_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="CONTRARIO" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/juez_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="JUEZ A CARGO" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tipoProceso_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TIPO DE PROCESO" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etapa_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ETAPA DEL PROCESO" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/instancia_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="INSTANCIA" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingBottom="@dimen/fragment_padding">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/notas_proceso_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="NOTAS" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/guardar_proceso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="guardar "/>
+    </LinearLayout>
+
+</ScrollView>

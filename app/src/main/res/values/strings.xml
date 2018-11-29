@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Agenda 2</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Agenda 2.0</string>
+    <string name="nav_header_subtitle">La jerbo agenda en proceso</string>
+    <string name="nav_header_desc">aerasdfasd@asdfasdf</string>
+    <string name="action_settings">Opciones</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mostrar_procesos">Mostrar_procesos</string>
+    <string name="title_activity_add_compromiso">AddCompromisoActivity</string>
+
+    <string-array name="opciones">
+        <item>Audiencia</item>
+        <item>Reunion</item>
+        <item>Diligencia</item>
+        <item>Otros</item>
+    </string-array>
+</resources>

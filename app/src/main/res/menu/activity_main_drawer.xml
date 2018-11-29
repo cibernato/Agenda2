@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_inicio"
+            android:icon="@drawable/ic_home_black"
+            android:title="Inicio" />
+        <item
+            android:id="@+id/drawer_clientes"
+            android:icon="@drawable/ic_person"
+            android:title="Clientes" />
+        <item
+            android:id="@+id/drawer_procesos"
+            android:icon="@drawable/ic_view_agenda"
+            android:title="Procesos" />
+        <item
+            android:id="@+id/drawer_agenda"
+            android:icon="@drawable/ic_dibujo_1"
+            android:title="Mi Agenda" />
+        <item
+            android:id="@+id/drawer_financiero"
+            android:icon="@drawable/ic_trending_up"
+            android:title="Financiero" />
+    </group>
+
+    <item android:title="Extras">
+        <menu>
+            <item
+                android:id="@+id/drawer_export"
+                android:icon="@drawable/ic_screen_share"
+                android:title="Exportar Datos" />
+            <item
+                android:id="@+id/drawer_backup"
+                android:icon="@drawable/ic_cloud_upload_black"
+                android:title="Copia de seguridad" />
+        </menu>
+    </item>
+
+</menu>
