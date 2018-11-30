@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.proyecto.jerbo.agenda2"
     xmlns:tools="http://schemas.android.com/tools"
-    >
-    <uses-sdk tools:overrideLibrary="com.wdullaer.materialdatetimepicker"/>
+    package="com.proyecto.jerbo.agenda2">
+
+    <uses-sdk tools:overrideLibrary="com.wdullaer.materialdatetimepicker" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,15 +27,14 @@
         <activity
             android:name=".Activities.MostrarProcesosActivity"
             android:label="@string/title_activity_mostrar_procesos"
-            android:parentActivityName=".Activities.MostrarProcesosActivity" />
-        <activity android:name=".Activities.PruebaRoomActivity" />
-        <activity android:name=".Activities.MostrarCompromisos"
-            android:parentActivityName=".Activities.MainActivity"/>
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity
+            android:name=".Activities.MostrarCompromisos"
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
             android:name=".Activities.AddCompromisoActivity"
             android:label="@string/title_activity_add_compromiso"
-            android:parentActivityName=".Activities.MostrarCompromisos"
-            >
+            android:parentActivityName=".Activities.MostrarCompromisos">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.proyecto.jerbo.agenda2.Activities.MostrarCompromisos" />

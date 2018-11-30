@@ -22,16 +22,8 @@
         app:showAsAction="never"
 
         />
-    <item
-        android:title="Ordenar por Tribunal"
-        app:showAsAction="never"
 
-        />
-    <item
-        android:title="Procesos activos"
-        app:showAsAction="never"
 
-        />
 
 
 </menu>

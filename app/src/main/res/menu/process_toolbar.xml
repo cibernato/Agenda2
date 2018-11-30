@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     >
 
     <item
@@ -9,33 +8,5 @@
         android:icon="@android:drawable/ic_menu_delete"
         android:title="Borrar"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/action_favorite2"
-        android:title="tramite"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/toolbar_compromiso"
-        android:orderInCategory="100"
-        android:title="comrpomiso"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/toolbar_cargar"
-        android:orderInCategory="100"
-        android:title="Hacer Carga"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/toolbar_honorarios"
-        android:orderInCategory="100"
-        android:title="Hoinorarios"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/toolbar_foto"
-        android:orderInCategory="100"
-        android:title="nueva foto"
-        app:showAsAction="never"/>
-    <item
-        android:id="@+id/toolbar_ver_fotos"
-        android:orderInCategory="100"
-        android:title="verfotos del caso"
-        app:showAsAction="never"/>
+
 </menu>

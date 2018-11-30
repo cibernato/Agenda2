@@ -43,10 +43,7 @@ public class MostrarProcesosActivity extends AppCompatActivity implements Proces
 
     @Override
     public void onBackPressed() {
-        /*if (getSupportFragmentManager().findFragmentByTag("a ver").equals(ProcessFragment.class)){
-            super.onBackPressed();
-        }else
-        startActivity(new Intent(this,MainActivity.class));*/
+        startActivity(new Intent(this,MainActivity.class));
         super.onBackPressed();
     }
 
@@ -54,7 +51,7 @@ public class MostrarProcesosActivity extends AppCompatActivity implements Proces
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                super.onBackPressed();
+                onBackPressed();
                 return true;
             case  R.id.add_proceso:
                 startActivity(new Intent(this, AddProcesoActivity.class));

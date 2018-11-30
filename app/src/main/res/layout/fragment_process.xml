@@ -36,15 +36,16 @@
                 android:background="#000000"
                 android:layout_marginLeft="10dp"
                 />
-            <TextView
+            <EditText
                 android:layout_marginLeft="10dp"
                 android:id="@+id/nameProcess"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ssdfsadfasdfdd"
                 android:textSize="17sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <LinearLayout
@@ -64,7 +65,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-
+                android:singleLine="true"
                 />
             <View
                 android:layout_width="fill_parent"
@@ -73,17 +74,17 @@
                 android:layout_marginLeft="10dp"
                 />
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 >
 
-                <TextView
+                <EditText
                     android:id="@+id/expediente"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="12dp"
-
+                    android:singleLine="true"
                     android:text="aaropnm xd"/>
 
             </LinearLayout>
@@ -119,17 +120,18 @@
                 android:layout_marginLeft="10dp"
                 />
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 >
 
-                <TextView
+                <EditText
                     android:id="@+id/name_juzgado"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="12dp"
                     android:text="el que sea xd xd"
+                    android:singleLine="true"
                     />
 
             </LinearLayout>
@@ -158,15 +160,16 @@
                 android:background="#000000"
                 android:layout_marginLeft="10dp"
                 />
-            <TextView
+            <EditText
                 android:layout_marginLeft="10dp"
                 android:id="@+id/name_especialista"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ssdfsadfasdfdd"
                 android:textSize="17sp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:singleLine="true"/>
         </LinearLayout>
 
         <LinearLayout
@@ -198,13 +201,14 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp">
 
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/tipoProceso"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:singleLine="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -213,13 +217,14 @@
                     android:textSize="12sp"
                     />
 
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/jurisdiccion"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:singleLine="true"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -227,13 +232,15 @@
                     android:textColor="#686060"
                     android:textSize="12sp"
                     />
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/rJuicio"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:singleLine="true"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -241,13 +248,15 @@
                     android:textColor="#686060"
                     android:textSize="12sp"
                     />
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/juezEncargado"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:singleLine="true"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -255,13 +264,15 @@
                     android:textColor="#686060"
                     android:textSize="12sp"
                     />
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/etapaCaso"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    android:singleLine="true"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -269,13 +280,14 @@
                     android:text="INSTANCIA"
                     android:textColor="#686060"
                     android:textSize="12sp" />
-                <TextView
+                <EditText
                     android:layout_marginTop="10dp"
                     android:id="@+id/asuento"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ssdfsadfasdfdd"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -1,8 +1,6 @@
 package com.proyecto.jerbo.agenda2.Fragments;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,13 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.proyecto.jerbo.agenda2.Activities.MostrarCompromisos;
 import com.proyecto.jerbo.agenda2.Activities.MostrarProcesosActivity;
-import com.proyecto.jerbo.agenda2.Activities.PruebaRoomActivity;
 import com.proyecto.jerbo.agenda2.R;
 
 /**
@@ -35,7 +29,6 @@ public class InicioFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     AppCompatActivity a;
-
 
 
     private OnFragmentInteractionListener mListener;
@@ -81,13 +74,7 @@ public class InicioFragment extends Fragment {
                 startActivity(procesos);
             }
         });
-        Button prueba2 = vista.findViewById(R.id.prueba_2);
-        prueba2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), PruebaRoomActivity.class));
-            }
-        });
+
         Button compro = vista.findViewById(R.id.inicio_clientes);
         compro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,8 +82,6 @@ public class InicioFragment extends Fragment {
                 startActivity(new Intent(getContext(), MostrarCompromisos.class));
             }
         });
-
-
         return vista;
     }
 

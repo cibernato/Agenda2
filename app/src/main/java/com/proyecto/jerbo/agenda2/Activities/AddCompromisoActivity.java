@@ -56,7 +56,6 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tipo = parent.getItemAtPosition(position).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -83,18 +82,17 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
     }
 
     private void registrarDatos() {
-        Compromiso b = (Compromiso) recb.getSerializableExtra("comp");
         conn = new ConexionSQLiteHelper(this, Utils.TABLE_COMPROMISO_NAME, null, 1);
         SQLiteDatabase db = conn.getWritableDatabase();
         ContentValues values;
-        if (validarDatos() && b == null) {
+        if (validarDatos() && comp == null) {
             values = llenarValues();
             long a = db.insert(Utils.TABLE_COMPROMISO_NAME, Utils.COMPROMISO_FECHA_ROW, values);
             Toast.makeText(this, "id " + a, Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MostrarCompromisos.class));
         } else {
             values = llenarValues();
-            db.update(Utils.TABLE_COMPROMISO_NAME, values, "id =?", new String[]{String.valueOf(b.getId())});
+            db.update(Utils.TABLE_COMPROMISO_NAME, values, "id =?", new String[]{String.valueOf(comp.getId())});
             startActivity(new Intent(this, MostrarCompromisos.class));
         }
         db.close();
@@ -136,7 +134,7 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
                 registrarDatos();
                 return true;
             case R.id.delete_compromiso:
-                comp = (Compromiso) recb.getSerializableExtra("comp");
+                //comp = (Compromiso) recb.getSerializableExtra("comp");
                 if (comp != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage("¿Desea eliminar este compromiso?")

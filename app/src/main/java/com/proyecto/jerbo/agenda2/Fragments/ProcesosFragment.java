@@ -1,6 +1,7 @@
 package com.proyecto.jerbo.agenda2.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.proyecto.jerbo.agenda2.Activities.AddProcesoActivity;
 import com.proyecto.jerbo.agenda2.Adapters.AdapterDatos;
 import com.proyecto.jerbo.agenda2.Clases.Proceso;
 import com.proyecto.jerbo.agenda2.Clases.Utils;
@@ -89,18 +91,9 @@ public class ProcesosFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Proceso env = procesos.get(recyclerView.getChildAdapterPosition(v));
-                Bundle args = new Bundle();
-                args.putSerializable("proceso", env);
-                ProcessFragment fragment = new ProcessFragment();
-                fragment.recibirArgs(args);
-                // Toast.makeText(getContext(),"Selección: "+env.getCliente(),Toast.LENGTH_SHORT).show();
-
-//                FALRA HACER QUE NO REGRESE LA WEA AL INCIIO PUEDE SER IF NOMAS
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contentMostrarProceso, fragment).addToBackStack("a ver").commit();
-                if (getActivity().getSupportFragmentManager().getBackStackEntryCount()>1){
-                    getActivity().getSupportFragmentManager().popBackStack();
-                }
-
+                Intent act = new Intent(getContext(),AddProcesoActivity.class);
+                act.putExtra("pro",env);
+                startActivity(act);
             }
         });
 

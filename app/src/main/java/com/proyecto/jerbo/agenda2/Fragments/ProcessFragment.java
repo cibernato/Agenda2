@@ -3,6 +3,7 @@ package com.proyecto.jerbo.agenda2.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.proyecto.jerbo.agenda2.Activities.MostrarProcesosActivity;
 import com.proyecto.jerbo.agenda2.Clases.Proceso;
 import com.proyecto.jerbo.agenda2.Clases.Utils;
 import com.proyecto.jerbo.agenda2.Clases.ConexionSQLiteHelper;
@@ -25,27 +27,19 @@ import com.proyecto.jerbo.agenda2.R;
 
 
 public class ProcessFragment extends Fragment {
+    ConexionSQLiteHelper conn;
     private Proceso recb;
     private OnFragmentInteractionListener mListener;
-    ConexionSQLiteHelper conn;
 
     public ProcessFragment() {
         // Required empty public constructor
-    }
-
-    // TODO: Rename and change types and number of parameters
-    public static ProcessFragment newInstance(String param1, String param2) {
-        ProcessFragment fragment = new ProcessFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        conn = new ConexionSQLiteHelper(getContext(),Utils.TABLE_NAME,null,1);
+        conn = new ConexionSQLiteHelper(getContext(), Utils.TABLE_NAME, null, 1);
     }
 
     @Override
@@ -61,7 +55,6 @@ public class ProcessFragment extends Fragment {
         TextView especialista = vista.findViewById(R.id.name_especialista);
         especialista.setText(recb.getEspecialista().toString());
         setHasOptionsMenu(true);
-
         return vista;
     }
 
@@ -95,21 +88,6 @@ public class ProcessFragment extends Fragment {
 
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
@@ -122,6 +100,7 @@ public class ProcessFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(getContext(), "que raro", Toast.LENGTH_SHORT).show();
         switch (item.getItemId()) {
             case R.id.process_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -144,8 +123,7 @@ public class ProcessFragment extends Fragment {
                 return true;
 
             case android.R.id.home:
-
-                getFragmentManager().popBackStack();
+                startActivity(new Intent(getContext(), MostrarProcesosActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -153,15 +131,32 @@ public class ProcessFragment extends Fragment {
 
     private void deleteProcess() {
         SQLiteDatabase db = conn.getWritableDatabase();
-        String [] params={String.valueOf(recb.getId())};
+        String[] params = {String.valueOf(recb.getId())};
         try {
-            db.delete(Utils.TABLE_NAME,"id =?",params);
-        }catch (Exception e){
-            Log.e("FAIL",e.getLocalizedMessage());
+            db.delete(Utils.TABLE_NAME, "id =?", params);
+        } catch (Exception e) {
+            Log.e("FAIL", e.getLocalizedMessage());
         }
 
-        Toast.makeText(getContext(),"Ya se Eliminó el proceso",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Ya se Eliminó el proceso", Toast.LENGTH_LONG).show();
         db.close();
         getFragmentManager().popBackStack();
     }
+
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
+
 }
