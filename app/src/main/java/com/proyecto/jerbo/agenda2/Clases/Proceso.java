@@ -68,4 +68,9 @@ public class Proceso implements Serializable {
     public void setId2(int id2) {
         this.id2 = id2;
     }
+
+    @Override
+    public String toString() {
+        return cliente+" "+expediente;
+    }
 }

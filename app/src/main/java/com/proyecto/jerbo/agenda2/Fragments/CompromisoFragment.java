@@ -32,10 +32,10 @@ import java.util.List;
  * interface.
  */
 public class CompromisoFragment extends Fragment {
-    private ArrayList<Compromiso> compromisos;
+    ArrayList<String> procesos;
     RecyclerView recyclerView;
     ConexionSQLiteHelper conn;
-
+    private ArrayList<Compromiso> compromisos;
     private OnListFragmentInteractionListener mListener;
 
     /**
@@ -67,16 +67,18 @@ public class CompromisoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_compromiso_list, container, false);
         recyclerView = view.findViewById(R.id.recycler_view_compromiso);
         compromisos = new ArrayList<>();
+        procesos = new ArrayList<>();
         llenarCompromisos();
-        CompromisoAdapter adapter = new  CompromisoAdapter(compromisos);
+        CompromisoAdapter adapter = new CompromisoAdapter(compromisos, procesos);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Compromiso env = compromisos.get(recyclerView.getChildAdapterPosition(v));
-                Intent act = new Intent(getContext(),AddCompromisoActivity.class);
-                act.putExtra("comp",env);
+                Intent act = new Intent(getContext(), AddCompromisoActivity.class);
+                act.putExtra("comp", env);
+                act.putExtra("proceso",procesos.get(recyclerView.getChildAdapterPosition(v)));
                 startActivity(act);
             }
         });
@@ -87,13 +89,25 @@ public class CompromisoFragment extends Fragment {
 
     private void llenarCompromisos() {
         SQLiteDatabase db = conn.getWritableDatabase();
+        ConexionSQLiteHelper conn2 = new ConexionSQLiteHelper(getContext(), Utils.TABLE_NAME, null, 1);
+        SQLiteDatabase db2 = conn2.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utils.TABLE_COMPROMISO_NAME, null);
         while (cursor.moveToNext()) {
             boolean a = true;
             if (Integer.parseInt(cursor.getString(7)) == 0) {
                 a = false;
             }
+
             try {
+                int idex = Integer.parseInt(cursor.getString(6));
+
+                if (idex > 0) {
+                    Cursor temp = db2.query(Utils.TABLE_NAME, null, "id=?", new String[]{String.valueOf(idex)}, null, null, null);
+                    temp.move(1);
+                    procesos.add(temp.getString(1) + " " + temp.getString(2));
+                } else {
+                    procesos.add("Ningun proceso vinculado");
+                }
                 Compromiso env = new Compromiso(
                         cursor.getString(1),
                         cursor.getString(2),
@@ -106,11 +120,13 @@ public class CompromisoFragment extends Fragment {
                 env.setId(Integer.parseInt(cursor.getString(0)));
                 compromisos.add(env);
             } catch (Exception e) {
-                Log.e("xd",e.toString());
+                Log.e("xd", e.toString());
+                Log.e("error", e.getLocalizedMessage());
                 Toast.makeText(getContext(), "error pe xd", Toast.LENGTH_SHORT).show();
             }
-
         }
+        db.close();
+        db2.close();
 
     }
 

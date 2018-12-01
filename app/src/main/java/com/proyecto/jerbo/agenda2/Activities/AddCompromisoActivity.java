@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,8 +23,10 @@ import android.widget.Toast;
 
 import com.proyecto.jerbo.agenda2.Clases.Compromiso;
 import com.proyecto.jerbo.agenda2.Clases.ConexionSQLiteHelper;
+import com.proyecto.jerbo.agenda2.Clases.Proceso;
 import com.proyecto.jerbo.agenda2.Clases.Utils;
 import com.proyecto.jerbo.agenda2.Fragments.DatePickerFragment;
+import com.proyecto.jerbo.agenda2.Fragments.ProcesosFragment;
 import com.proyecto.jerbo.agenda2.Fragments.TimePickerFragment;
 import com.proyecto.jerbo.agenda2.R;
 
@@ -30,14 +34,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class AddCompromisoActivity extends AppCompatActivity implements DatePickerFragment.DateDialogListener, TimePickerFragment.TimeDialogListener {
+public class AddCompromisoActivity extends AppCompatActivity implements
+        DatePickerFragment.DateDialogListener,
+        TimePickerFragment.TimeDialogListener,
+        ProcesosFragment.OnFragmentInteractionListener {
     private Compromiso comp;
-    private TextView fecha, hora, persona, comentario, recor;
+    private TextView fecha, hora, persona, comentario, recor,proceso;
     private String tipo;
+    Button desvincular;
     AlertDialog alertDialog1;
     Intent recb;
     ConexionSQLiteHelper conn;
     String[] values = {" 5 min ", " 30 min", " 1 hora", "2 horas "};
+    Proceso proceso_recb;
 
 
     @Override
@@ -50,15 +59,25 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
         fecha = findViewById(R.id.comprmiso_add_fecha);
         persona = findViewById(R.id.compromiso_add_persona);
         comentario = findViewById(R.id.compromiso_add_comentario);
+        proceso = findViewById(R.id.compromiso_add_proceso);
+        desvincular = findViewById(R.id.desvincular_proceso);
+        desvincular.setVisibility(View.GONE);
+        desvincular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                proceso_recb =null;
+                proceso.setText("Toque para seleccionar");
+                desvincular.setVisibility(View.GONE);
+            }
+        });
         Spinner spn = findViewById(R.id.compromiso_spinner);
-        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tipo = parent.getItemAtPosition(position).toString();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         recb = getIntent();
@@ -68,6 +87,7 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
             hora.setText(comp.getHora());
             persona.setText(comp.getPersona());
             comentario.setText(comp.getComentario());
+            proceso.setText(recb.getStringExtra("proceso"));
             String[] p = getResources().getStringArray(R.array.opciones);
             for (int i = 0; i < p.length; i++) {
                 if (comp.getTipo().equals(p[i])) {
@@ -76,6 +96,9 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
             }
             if (comp.getRecordatorioText() != null) {
                 recor.setText(comp.getRecordatorioText());
+            }
+            if (!proceso.getText().toString().trim().isEmpty()){
+                desvincular.setVisibility(View.VISIBLE);
             }
         }
 
@@ -105,7 +128,11 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
         values.put(Utils.COMPROMISO_TIPO_ROW, tipo);
         values.put(Utils.COMPROMISO_COMENTARIO_ROW, comentario.getText().toString().trim());
         values.put(Utils.COMPROMISO_PERSONA_ROW, persona.getText().toString().trim());
-        values.put(Utils.COMPROMISO_ID_PROCESO_ROW, 0);
+        if(proceso_recb !=null){
+            values.put(Utils.COMPROMISO_ID_PROCESO_ROW, proceso_recb.getId());
+        }else {
+            values.put(Utils.COMPROMISO_ID_PROCESO_ROW, -1);
+        }
         if (!recor.getText().toString().isEmpty()) {
             values.put(Utils.COMPROMISO_RECORDATORIO_ROW, 1);
             values.put(Utils.COMPROMISO_RECORDATORIO_TEXT_ROW, recor.getText().toString().trim());
@@ -234,5 +261,22 @@ public class AddCompromisoActivity extends AppCompatActivity implements DatePick
         });
         alertDialog1 = builder.create();
         alertDialog1.show();
+    }
+
+    public void seleccionarProceso(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putString("conf","si");
+        ProcesosFragment fragment = new ProcesosFragment();
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_add_compromiso,fragment).addToBackStack("mm").commit();
+    }
+    public void recibirProceso(Proceso proceso){
+        this.proceso.setText(proceso.toString());
+        proceso_recb=proceso;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

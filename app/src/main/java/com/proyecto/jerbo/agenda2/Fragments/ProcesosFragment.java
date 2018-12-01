@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.proyecto.jerbo.agenda2.Activities.AddCompromisoActivity;
 import com.proyecto.jerbo.agenda2.Activities.AddProcesoActivity;
 import com.proyecto.jerbo.agenda2.Adapters.AdapterDatos;
 import com.proyecto.jerbo.agenda2.Clases.Proceso;
@@ -34,8 +36,6 @@ import java.util.ArrayList;
  * Activities that contain this fragment must implement the
  * {@link ProcesosFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProcesosFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class ProcesosFragment extends Fragment {
     ArrayList<Proceso> procesos;
@@ -51,28 +51,10 @@ public class ProcesosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProcesosFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProcesosFragment newInstance(String param1, String param2) {
-        ProcesosFragment fragment = new ProcesosFragment();
-        Bundle args = new Bundle();
-
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        conx = new ConexionSQLiteHelper(getContext(), Utils.TABLE_NAME, null, 1);
     }
 
     @Override
@@ -87,6 +69,7 @@ public class ProcesosFragment extends Fragment {
         AdapterDatos adapterDatos = new AdapterDatos(procesos);
         recyclerView.setAdapter(adapterDatos);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        if(!confirmacion()){
         adapterDatos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,12 +79,28 @@ public class ProcesosFragment extends Fragment {
                 startActivity(act);
             }
         });
-
-
+        }else{
+            vista.setBackgroundColor(Color.WHITE
+            );
+            adapterDatos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((AddCompromisoActivity)getActivity()).recibirProceso(procesos.get(recyclerView.getChildAdapterPosition(v)));
+                    getFragmentManager().popBackStack();
+                }
+            });
+        }
         return vista;
     }
+    public boolean confirmacion(){
+        if(getArguments()!=null &&  getArguments().getString("conf").equals("si")){
+            return true;
+        }
+        return false;
 
+    }
     private void llenarProcesos() {
+        conx = new ConexionSQLiteHelper(getContext(), Utils.TABLE_NAME, null, 1);
         SQLiteDatabase db = conx.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + Utils.TABLE_NAME, null);
         while (cursor.moveToNext()) {
@@ -115,8 +114,8 @@ public class ProcesosFragment extends Fragment {
             }
         }
         db.close();
-
     }
+
 
 
     // TODO: Rename method, update argument and hook method into UI event

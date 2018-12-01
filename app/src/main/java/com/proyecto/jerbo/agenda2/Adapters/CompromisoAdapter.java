@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.proyecto.jerbo.agenda2.Clases.Compromiso;
+import com.proyecto.jerbo.agenda2.Clases.ConexionSQLiteHelper;
 import com.proyecto.jerbo.agenda2.R;
 
 import java.text.ParseException;
@@ -18,11 +19,14 @@ import java.util.List;
 public class CompromisoAdapter extends RecyclerView.Adapter<CompromisoAdapter.ViewHolder> implements View.OnClickListener {
 
     private final List<Compromiso> mValues;
+    private final List<String> ids;
+
     private View.OnClickListener listener;
 
-    public CompromisoAdapter(List<Compromiso> items) {
-        mValues = items;
 
+    public CompromisoAdapter(List<Compromiso> items,List<String> procesos) {
+        mValues = items;
+        ids = procesos;
     }
 
     @Override
@@ -34,6 +38,7 @@ public class CompromisoAdapter extends RecyclerView.Adapter<CompromisoAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+
         holder.comp = mValues.get(position);
         String[] fecha= {"","",""};
         try {
@@ -47,11 +52,10 @@ public class CompromisoAdapter extends RecyclerView.Adapter<CompromisoAdapter.Vi
             fecha[2]="2234";  */
         }
 
-
         holder.tipo.setText(holder.comp.getTipo());
         holder.persona.setText(holder.comp.getPersona());
-        holder.id_proceso.setText(holder.comp.getId_proceso());
-        Log.e("persona", holder.comp.getPersona()+"nada" );
+        holder.id_proceso.setText(ids.get(position));
+        //Log.e("persona", holder.comp.getPersona()+"nada" );
         String inputDateString = "01/22/2013";
         Calendar calCurr = Calendar.getInstance();
         Calendar day = Calendar.getInstance();
